@@ -10,67 +10,172 @@
     <meta name="description" content="Cosas que a lo mejor he jugado">
     <meta name="keywords" content="HTML, CSS, JavaScript">
     <meta name="author" content="Juan Pablo Velásquez">
-    <meta http-equiv="refresh" content="10">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
 </head>
-<body class="bg-dark text-muted">
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark" id="navi">
-        <ul class="navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link" href="#" id="home_btn">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#" id="nintendo_btn">Nintendo</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#" id="ps_btn">PlayStation</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#" id="pc_btn">PC</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#" id="xbox_btn">Xbox (Coming Soon)</a>
-            </li>
-        </ul>
-    </nav>
-    <div>
+<body class="text-muted" id="cuerpo" style="background-color:#343a40">
+    <div class="container">
+        <nav class="navbar navbar-expand-sm navbar-dark" id="navi" style="background-color:#343a40">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Nintendo</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">PlayStation</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">PC</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#">Xbox (Coming Soon)</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="container" id="titulo">
+        <div class="row col-md-12">
         <h1>Videojuegos</h1>
-        <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-4">
-                <p>He aquí una página con todo lo que se me ocurrió de cosas de 
-                    videojuegos que quería hablar 
-                    y ya que no tengo otro lugar o momento mejor...
+        </div>
+        <br>
+        <div class="row col-md-12" id="home_div">
+            <div class="row col-md-12">
+                <h1>PC</h1>
+            </div>
+            <div class="row col-md-12">
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                    <p>He aquí una página con todo lo que se me ocurrió de cosas de 
+                        videojuegos que quería hablar 
+                        y ya que no tengo otro lugar o momento mejor...
+                        <br>Sí, fan de los Mobas y exjugador de Dota 2 (ya 3000 horas fue demasiado, necesitaba un descanso).
+                    </p>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                    <p>
+                        <img src="/img/Dota_2_logo.png" alt="Lights" style="width:100%">
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row col-md-12" style="display: none" id="nintendo_div">
+            <div class="row col-md-12"><h1>Nintendo</h1></div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                            <p>Porque obviamente toca la infancia de todos 
+                                (a menos que seas de las personas que tuvo un Sega o lo 
+                                suficientemente viejo como para que ya no era infancia) 
+                                y logra que uno siga comprando esa onda en cualquier caso.
+                                <br>Sí, compré la switch y sí, estoy esperando smash como loco.
+                            </p>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                        <p>
+                            <img src="/img/smash.png" alt="Lights" style="width:100%">
+                        </p>
+                    </div>
+                </div>
+        </div>      
+        <div class="row col-md-12" style="display: none" id="ps_div">
+            <div class="row col-md-12">
+                <h1>PlayStation</h1>
+            </div>
+            <br>
+            <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                <p>No soy tan fanático del PS4, pero debo de admitir que ha sido una 
+                    muy buena época para los JRPG, sobre todo con juegos estilo Persona 5
+                    y los Digimon, además de las típicas joyas como God of War y The Last of Us.
                 </p>
             </div>
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-4">
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                 <p>
-                    <img src="/img/Dota_2_logo.png" alt="Lights" style="width:100%">
+                    <img src="/img/persona5.jpg" alt="Lights" style="width:100%">
                 </p>
             </div>
         </div>
-        <div class="row" style="display: none">
-                <h1>Nintendo</h1>
-                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-4">
-                    <p>Porque obviamente toca la infancia de todos 
-                        (a menos que seas de las personas que tuvo un Sega o lo 
-                        suficientemente viejo como para que ya no era infancia) 
-                        y logra que uno siga comprando esa onda en cualquier caso.
-                        <br>Sí, compré la switch y sí, estoy esperando smash como loco.
-                    </p>
-                </div>
-                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-4">
-                    <p>
-                        <img src="/img/smash.png" alt="Lights" style="width:100%">
-                    </p>
-                </div>
+        </div>
+        <div class="row col-md-12" style="display: none" id="xbox_div">
+        <div class="row col-md-12">   
+            <div class="row col-md-12">
+                <h1>Xbox</h1> 
+            </div>
+            <br>
+            <div class="row col-md-12"></div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                <p>Como dice arriba, todavía no tengo un Xbox, pero, como todos, fui fan de Halo.
+                    <br>Ojalá que el próximo xbox sea bueno, que no pienso tirar dinero en un Xbox One X.
+                </p>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                <p>
+                    <img src="/img/halo.jpg" alt="Lights" style="width:100%">
+                </p>
+            </div>
+        </div>
         </div>
     </div>
-    <script>
-
+    </div>
+    <div class="container">
+            <button type="button" class="btn btn-danger" id="show_nintendo" style="margin: 10px;padding: 10px" id="nintendo_btn" onclick="nintendo()">Nintendo</button>
+            <button type="button" class="btn btn-success" id="show_xbox" style="margin: 10px;padding: 10px" id="xbox_btn" onclick="xbox()">Xbox</button>
+            <button type="button" class="btn btn-info" id="show_ps" style="margin: 10px;padding: 10px" id="ps_btn" onclick="ps()">PlayStation</button>
+            <button type="button" class="btn btn-dark" id="show_home" style="margin: 10px;padding: 10px" id="home_btn" onclick="home()">Home (PC)</button>
+            <button type="button" class="btn btn-warning" id="show_none" style="margin: 10px;padding: 10px" id="none_btn" onclick="sorpresa()">Sorpresa</button>
+        </div> 
+    <script type = "text/JavaScript">
+            function nintendo(){
+            document.getElementById("xbox_div").style.display="none";
+            document.getElementById("ps_div").style.display="none";
+            document.getElementById("nintendo_div").style.display="block";
+            document.getElementById("home_div").style.display="none";
+            document.getElementById("cuerpo").style="background-color:Red; color: white";
+            document.getElementById("navi").style="background-color:Red; color: white";
+            document.getElementById("nintendo_div").style="background-color:Red; color: white";
+            document.getElementById("titulo").style="background-color:Red; color: white";
+            }   
+            function xbox(){
+            document.getElementById("xbox_div").style.display="block";
+            document.getElementById("ps_div").style.display="none";
+            document.getElementById("nintendo_div").style.display="none";
+            document.getElementById("home_div").style.display="none";
+            document.getElementById("cuerpo").style="background-color:Green; color: white";
+            document.getElementById("navi").style="background-color:Green; color: white";
+            document.getElementById("xbox_div").style="background-color:Green; color: white";
+            document.getElementById("titulo").style="background-color:Green; color: white";
+            }   
+            function ps(){
+            document.getElementById("xbox_div").style.display="none";
+            document.getElementById("ps_div").style.display="block";
+            document.getElementById("nintendo_div").style.display="none";
+            document.getElementById("home_div").style.display="none";
+            document.getElementById("cuerpo").style="background-color:Blue; color: white";
+            document.getElementById("navi").style="background-color:Blue; color: white";
+            document.getElementById("ps_div").style="background-color:Blue; color: white";
+            document.getElementById("titulo").style="background-color:Blue; color: white";
+            }   
+            function home(){
+            document.getElementById("xbox_div").style.display="none";
+            document.getElementById("ps_div").style.display="none";
+            document.getElementById("nintendo_div").style.display="none";
+            document.getElementById("home_div").style.display="block";
+            document.getElementById("cuerpo").style="background-color:#343a40; color: white";
+            document.getElementById("navi").style="background-color:#343a40; color: white";
+            document.getElementById("home_div").style="background-color:#343a40; color: white";
+            document.getElementById("titulo").style="background-color:#343a40; color: white";
+            }   
+            function sorpresa(){
+            document.getElementById("xbox_div").style.display="none";
+            document.getElementById("ps_div").style.display="none";
+            document.getElementById("nintendo_div").style.display="none";
+            document.getElementById("home_div").style.display="none";
+            document.getElementById("cuerpo").style="background-color:#343a40; color: white";
+            document.getElementById("navi").style="background-color:#343a40; color: white";
+            }     
     </script>
 </body>
 </html>

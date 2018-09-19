@@ -1,6 +1,5 @@
 body {
-  margin: 0;
-  padding: 0;
+  background-color: rgb(42, 7, 65);
   font-family: sans-serif;
 }
 h1, li, .title {
@@ -10,10 +9,30 @@ h1, li {
   text-align: center;
 }
 .title {
-  background-color: #D8BFD8;
+  background-color: #d8bfd7;
   font-size: 20px;
 }
 li {
   list-style-type: none;
   font-size: 18px;
+}
+.card.col-md-6 {
+  background-color: rgb(42, 7, 65);
+  border: 0px;
+  
+}
+.card-body {
+  background-color: rgb(42, 7, 65);
+  margin: 10px;
+  padding: 10px;
+  color: rgb(38, 3, 41);
+}
+.container {
+  background-color: rgb(42, 7, 65);
+  color: white;
+}
+.container .jumbotron, .container-fluid .jumbotron
+{
+  background-color: rgb(42, 7, 65);
+  color: white;
 }

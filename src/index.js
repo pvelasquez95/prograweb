@@ -32,6 +32,7 @@ class Games extends React.Component {
         this.showEditModal = this.showEditModal.bind(this);
         this.addGame = this.addGame.bind(this);
         this.editGame = this.editGame.bind(this);
+        this.deleteGame = this.deleteGame.bind(this);
     }
     showAddModal() {
         this.setState({ showAdd: !this.state.showAdd });
@@ -50,6 +51,11 @@ class Games extends React.Component {
         games[currentlyEditing] = { name: newName, platform: newPlatform, rate: newRate, photo: newPhoto };
         this.setState({ games: games });
         this.showEditModal(currentlyEditing);
+    }
+    deleteGame(index) {//delete an existing game
+        let games = this.state.games.slice();
+        games.splice(index, 1);
+        this.setState({ games: games, currentlyEditing: 0 });
     }
     render() {
         const games = this.state.games;
@@ -70,12 +76,13 @@ class Games extends React.Component {
                                 </CardText>
                                 <ButtonToolbar>
                                     <Button bsStyle="warning" onClick={() => { this.showEditModal(index) }}>Edit</Button>
-                                    <Button bsStyle="danger">Delete</Button>
+                                    <Button bsStyle="danger" onClick={() => { this.deleteGame(index) }}>Delete</Button>
                                 </ButtonToolbar>
                                 <EditGame onShow={this.state.showEdit} onEdit={this.editGame}
                                     onEditModal={() => { this.showEditModal(this.state.currentlyEditing) }}
                                     currentlyEditing={this.state.currentlyEditing}
                                     game={games[this.state.currentlyEditing]} />
+
                             </CardBody>
 
                         </Card>

@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Button, ButtonToolbar, ListGroup, ListGroupItem } from 'react-bootstrap';
+import { Button, ButtonToolbar, ListGroupItem } from 'react-bootstrap';
 import { CardBody, CardTitle, Card, CardText } from 'reactstrap';
 import { ImageHeader } from "react-simple-card";
 import { AddGame } from './components/addgame';
@@ -8,7 +8,7 @@ import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
-
+ 
 class Games extends React.Component {
     constructor(props) {
         super(props);
@@ -47,17 +47,17 @@ class Games extends React.Component {
                         <Card key={index} className="col-md-6">
                             <CardBody>
                                 <CardTitle className="title">{game.name}</CardTitle>
+                                <ImageHeader imageSrc={game.photo} />
                                 <CardText>
-                                    <ImageHeader imageSrc={game.photo} />
-                                    
-                                        <ListGroupItem key={index}>{game.platform}</ListGroupItem>
-                                        <ListGroupItem key={index}>{game.rate}</ListGroupItem>
-                                    <ButtonToolbar>
-                                        <Button bsStyle="warning">Edit</Button>
-                                        <Button bsStyle="danger">Delete</Button>
-                                    </ButtonToolbar>
+                                    {game.platform.map((plat, index) => (
+                                        <ListGroupItem key={index}>{plat}</ListGroupItem>))}
+                                    {game.rate.map((rat, index) => (
+                                        <ListGroupItem key={index}>{rat}</ListGroupItem>))}
                                 </CardText>
-                                    
+                                <ButtonToolbar>
+                                    <Button bsStyle="warning">Edit</Button>
+                                    <Button bsStyle="danger">Delete</Button>
+                                </ButtonToolbar>
 
                             </CardBody>
 
@@ -65,7 +65,7 @@ class Games extends React.Component {
                     ))}
                 </div>
                 <Button bsStyle="primary" onClick={this.showAddModal}>Add Game</Button>
-                <AddGame onShow={this.state.showAdd} onAdd={this.addGame} onAddModal={this.showAddModal}/>
+                <AddGame onShow={this.state.showAdd} onAdd={this.addGame} onAddModal={this.showAddModal} />
             </div>
         );
     }

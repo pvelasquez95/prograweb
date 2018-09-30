@@ -4,11 +4,12 @@ import { Button, ButtonToolbar, ListGroupItem } from 'react-bootstrap';
 import { CardBody, CardTitle, Card, CardText } from 'reactstrap';
 import { ImageHeader } from "react-simple-card";
 import { AddGame } from './components/addgame';
+import { EditGame } from './components/editgame';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
- 
+
 class Games extends React.Component {
     constructor(props) {
         super(props);
@@ -23,19 +24,32 @@ class Games extends React.Component {
                 { name: "Persona 5", platform: ["PS4"], rate: ["8.5"], photo: ['https://upload.wikimedia.org/wikipedia/en/thumb/b/b0/Persona_5_cover_art.jpg/220px-Persona_5_cover_art.jpg'] },
                 { name: "Digimon Cyber Sleuth", platform: ["PS4"], rate: ["8"], photo: ['https://k61.kn3.net/taringa/4/7/2/3/7/3//gonza491/330x330_0BB.jpg'] },
             ],
-            showAdd: false
+            showAdd: false,
+            showEdit: false,
+            currentlyEditing: 0
         };
         this.showAddModal = this.showAddModal.bind(this);
+        this.showEditModal = this.showEditModal.bind(this);
         this.addGame = this.addGame.bind(this);
+        this.editGame = this.editGame.bind(this);
     }
     showAddModal() {
         this.setState({ showAdd: !this.state.showAdd });
+    }
+    showEditModal(index) {
+        this.setState({ showEdit: !this.state.showEdit, currentlyEditing: index });
     }
     addGame(game) {
         let games = this.state.games;
         games.push(game);
         this.setState({ games: games });
         this.showAddModal();
+    }
+    editGame(newName, newPlatform, newRate, newPhoto, currentlyEditing) {//edit an existing recipe
+        let games = this.state.games;
+        games[currentlyEditing] = { name: newName, platform: newPlatform, rate: newRate, photo: newPhoto };
+        this.setState({ games: games });
+        this.showEditModal(currentlyEditing);
     }
     render() {
         const games = this.state.games;
@@ -55,10 +69,13 @@ class Games extends React.Component {
                                         <ListGroupItem key={index}>{rat}</ListGroupItem>))}
                                 </CardText>
                                 <ButtonToolbar>
-                                    <Button bsStyle="warning">Edit</Button>
+                                    <Button bsStyle="warning" onClick={() => { this.showEditModal(index) }}>Edit</Button>
                                     <Button bsStyle="danger">Delete</Button>
                                 </ButtonToolbar>
-
+                                <EditGame onShow={this.state.showEdit} onEdit={this.editGame}
+                                    onEditModal={() => { this.showEditModal(this.state.currentlyEditing) }}
+                                    currentlyEditing={this.state.currentlyEditing}
+                                    game={games[this.state.currentlyEditing]} />
                             </CardBody>
 
                         </Card>
@@ -66,6 +83,7 @@ class Games extends React.Component {
                 </div>
                 <Button bsStyle="primary" onClick={this.showAddModal}>Add Game</Button>
                 <AddGame onShow={this.state.showAdd} onAdd={this.addGame} onAddModal={this.showAddModal} />
+
             </div>
         );
     }

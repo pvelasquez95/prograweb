@@ -1,7 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Button, ButtonToolbar, ListGroupItem } from 'react-bootstrap';
-import { CardBody, CardTitle, Card, CardText } from 'reactstrap';
 import { ImageHeader } from "react-simple-card";
 import { AddGame } from './components/addgame';
 import { EditGame } from './components/editgame';
@@ -68,34 +66,49 @@ class Games extends React.Component {
         const games = this.state.games;
         return (
             <div className="jumbotron">
-                <h1>All the videogames I've loved</h1>
-                <div id="games">
-                    {games.map((game, index) => (
-                        <Card key={index} className="col-md-6">
-                            <CardBody>
-                                <CardTitle className="title">{game.name}</CardTitle>
-                                <ImageHeader imageSrc={game.photo} />
-                                <CardText>
-                                    <ListGroupItem> {game.platform}</ListGroupItem>
-                                    <ListGroupItem> {game.rate}</ListGroupItem>
-                                </CardText>
-                                <ButtonToolbar>
-                                    <Button bsStyle="warning" onClick={() => { this.showEditModal(index) }}>Edit</Button>
-                                    <Button bsStyle="danger" onClick={() => { this.deleteGame(index) }}>Delete</Button>
-                                </ButtonToolbar>
-                                <EditGame onShow={this.state.showEdit} onEdit={this.editGame}
-                                    onEditModal={() => { this.showEditModal(this.state.currentlyEditing) }}
-                                    currentlyEditing={this.state.currentlyEditing}
-                                    game={games[this.state.currentlyEditing]} />
-
-                            </CardBody>
-
-                        </Card>
-                    ))}
+                <div className="container">
+                    <div className="neon">All the videogames I've loved</div>
+                    <div className="flux">♥ ♥ ♥ ♥ ♥</div>
                 </div>
-                <Button bsStyle="primary" onClick={this.showAddModal}>Add Game</Button>
-                <AddGame onShow={this.state.showAdd} onAdd={this.addGame} onAddModal={this.showAddModal} />
 
+                <div className="text-center">
+                    <button type="button" className="btn btn-labeled btn-primary btn-letra" onClick={this.showAddModal}>
+                        <span className="btn-label"><i className="glyphicon glyphicon-plus"></i></span>   Add Game   </button>
+                    <br />
+                </div>
+                <AddGame onShow={this.state.showAdd} onAdd={this.addGame} onAddModal={this.showAddModal} />
+                <div className="text-center">
+                    <div id="games" className="row mt-30">
+
+                        {games.map((game, index) => (
+                            <div className="col-md-4 col-sm-6" key={index}>
+                                <div className="box16" >
+                                    <ImageHeader imageSrc={game.photo} />
+                                    <div className="box-content">
+                                        <ul className="social">
+                                            <h3 className="title">{game.name}</h3>
+                                            <span className="post">Plataform: {game.platform}</span>
+                                            <br />
+                                            <span className="post">Rate: {game.rate}</span>
+                                            <br />
+                                            <button type="button" className="btn btn-labeled btn-warning btn-letra" onClick={() => { this.showEditModal(index) }}>
+                                                <span className="btn-label"><i className="glyphicon glyphicon-pencil"></i></span>   Edit   </button>
+                                            <br />
+                                            <button type="button" className="btn btn-labeled btn-danger btn-letra" onClick={() => { this.deleteGame(index) }}>
+                                                <span className="btn-label"><i className="glyphicon glyphicon-trash"></i></span>   Delete   </button>
+
+                                            <EditGame onShow={this.state.showEdit} onEdit={this.editGame}
+                                                onEditModal={() => { this.showEditModal(this.state.currentlyEditing) }}
+                                                currentlyEditing={this.state.currentlyEditing}
+                                                game={games[this.state.currentlyEditing]} />
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                        ))}
+                    </div>
+                </div>
             </div>
         );
     }

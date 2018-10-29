@@ -24,6 +24,15 @@ class Games extends React.Component {
         this.deleteGame = this.deleteGame.bind(this);
     }
     componentDidMount() {//load the local storage data after the component renders
+        const url = 'http://localhost:3001/api/juegos/';
+        fetch(url,{method: 'GET'})
+        .then(res => res.json())
+        .then(json => {
+            console.log('primero');
+            console.log(json);
+            console.log('primero fin');
+            this.setState({ games: json});
+        })/*
         var games = (typeof localStorage["games"] !== "undefined") ? JSON.parse(localStorage.getItem("games")) : [
             { name: "Dota 2", platform: ["PC"], rate: ["7"], photo: ['https://files.sirclocdn.xyz/kudouanimanga/products/_170803170241_21%20dota2_tn.jpg'] },
             { name: "Mario Odyssey", platform: ["NS"], rate: ["9.5"], photo: ['https://upload.wikimedia.org/wikipedia/en/thumb/8/8d/Super_Mario_Odyssey.jpg/220px-Super_Mario_Odyssey.jpg'] },
@@ -34,7 +43,8 @@ class Games extends React.Component {
             { name: "Persona 5", platform: ["PS4"], rate: ["8.5"], photo: ['https://upload.wikimedia.org/wikipedia/en/thumb/b/b0/Persona_5_cover_art.jpg/220px-Persona_5_cover_art.jpg'] },
             { name: "Digimon Cyber Sleuth", platform: ["PS4"], rate: ["8"], photo: ['https://k61.kn3.net/taringa/4/7/2/3/7/3//gonza491/330x330_0BB.jpg'] }
         ];
-        this.setState({ games: games });
+        this.setState({ games: games });*/
+        
     }
     showAddModal() {
         this.setState({ showAdd: !this.state.showAdd });
@@ -63,7 +73,12 @@ class Games extends React.Component {
         this.setState({ games: games, currentlyEditing: 0 });
     }
     render() {
-        const games = this.state.games;
+        const juegos2 = this.state.games;
+
+        const games = Array.from(Object.keys(juegos2), x=>juegos2[x]) ;
+        console.log('inicio')
+        console.log(games)
+        console.log('fin')
         return (
             <div className="jumbotron">
                 <div className="container">
@@ -79,6 +94,7 @@ class Games extends React.Component {
                 <AddGame onShow={this.state.showAdd} onAdd={this.addGame} onAddModal={this.showAddModal} />
                 <div className="text-center">
                     <div id="games" className="row mt-30">
+                    
 
                         {games.map((game, index) => (
                             <div className="col-md-4 col-sm-6" key={index}>
